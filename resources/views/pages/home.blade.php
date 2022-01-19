@@ -28,7 +28,7 @@
         <div class="col-md-4 text-center">
             {{-- <i class="fas fa-home fa-3x text-success mb-3"></i> --}}
             <h2 class="head-title">หน้าหลัก</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi enim magnam, ex provident doloribus
+            <p> ipsum dolor sit amet consectetur adipisicing elit. Animi enim magnam, ex provident doloribus
                 reprehenderit doloremque tenetur pariatur temporibus quisquam excepturi. Totam iusto aliquam nostrum
                 praesentium soluta laudantium quibusdam. Accusamus!</p>
         </div>
