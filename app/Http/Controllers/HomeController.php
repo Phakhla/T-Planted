@@ -7,19 +7,19 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function home(){
-        return "Controller.php" ;
+        return view('pages.home') ;
     }
     public function about(){
-        return "About" ;
+        return view("pages.about") ;
     }
     public function service(){
-        return "Service" ;
+        return view("pages.service") ;
     }
     public function contact(){
-        return "Controller.php" ;
+        return view("pages.contact") ;
     }
     public function login(){
-        return "Controller.php" ;
+        return view("pages.login") ;
     }
 
 }
