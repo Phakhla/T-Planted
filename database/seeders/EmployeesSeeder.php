@@ -37,7 +37,7 @@ class EmployeesSeeder extends Seeder
                 'status' => 1
             ],
             [
-                'fullname' => 'Siriwan Kongman',
+                'fullname' => 'Siriwan Kongmano',
                 'gender' => 'Female',
                 'email' => 'siriwan@email.com',
                 'tel' => '0879932922',
