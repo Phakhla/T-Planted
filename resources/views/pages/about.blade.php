@@ -1,4 +1,7 @@
 @extends('layouts.main_template')
+@section('title')
+    About
+@endsection
 @section('content')
     
 <div class="jumbotron">
@@ -8,6 +11,6 @@
 </div>
 
 <div class="container">
-    <p>tPlanted</p>
+    <p>ประวัติโดยย่อ</p>
 </div>
 @endsection

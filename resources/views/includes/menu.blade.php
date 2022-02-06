@@ -22,6 +22,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url("login") }}">เข้าสู่ระบบ</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url("employeelist") }}">สำหรับพนักงาน</a>
+                </li>
             </ul>
         </div>
     </div>

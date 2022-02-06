@@ -3,13 +3,13 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="{{asset('assets/images/KK.jpg')}}" class="d-block w-100" alt="Photo 1">
+            <img src="{{asset('assets/images/1.jpg')}}" class="d-block w-100" alt="Photo 1">
         </div>
         <div class="carousel-item">
-            <img src="{{asset('assets/images/11.jpg')}}" class="d-block w-100" alt="Photo 2">
+            <img src="{{asset('assets/images/2.jpg')}}" class="d-block w-100" alt="Photo 2">
         </div>
         <div class="carousel-item">
-            <img src="{{asset('assets/images/T11.png')}}" class="d-block w-100" alt="Photo 3">
+            <img src="{{asset('assets/images/3.jpg')}}" class="d-block w-100" alt="Photo 3">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -25,27 +25,41 @@
 <!--ส่วนของ Feature -->
 <div class="container mt-5">
     <div class="row">
+        <h1 class="text-center"> รายการสินค้า </h1>
         <div class="col-md-4 text-center">
-            {{-- <i class="fas fa-home fa-3x text-success mb-3"></i> --}}
-            <h2 class="head-title">หน้าหลัก</h2>
-            <p> ipsum dolor sit amet consectetur adipisicing elit. Animi enim magnam, ex provident doloribus
-                reprehenderit doloremque tenetur pariatur temporibus quisquam excepturi. Totam iusto aliquam nostrum
-                praesentium soluta laudantium quibusdam. Accusamus!</p>
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="{{asset('assets/images/Bag1.jpg')}}" alt="Card image">
+                <div class="card-body">
+                    <h4 class="card-title">One</h4>
+                    <p class="card-text">ราคา 100 บาท</p>
+                    <a href="#" class="btn btn-primary">รายละเอียดสินค้า</a>
+                </div>
+            </div>
         </div>
         <div class="col-md-4 text-center">
-            {{-- <i class="fas fa-concierge-bell fa-3x text-warning mb-3"></i> --}}
-            <h2 class="head-title">เกี่ยวกับเรา</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis nisi cumque nesciunt sed
-                beatae hic magni modi laboriosam ullam quam doloremque tempore commodi maiores, fugiat, porro
-                necessitatibus debitis placeat?</p>
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="{{asset('assets/images/Bag2.jpg')}}" alt="Card image">
+                <div class="card-body">
+                    <h4 class="card-title">Two piece</h4>
+                    <p class="card-text">ราคา 190 บาท</p>
+                    <a href="#" class="btn btn-primary">รายละเอียดสินค้า</a>
+                </div>
+            </div>
         </div>
         <div class="col-md-4 text-center">
-            {{-- <i class="fas fa-cloud-showers-heavy fa-3x text-danger mb-3"></i> --}}
-            <h2 class="head-title">บริการ</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sequi hic aliquam magni odio
-                accusantium vero numquam quo labore odit? Totam, eius. Aperiam sapiente, eius accusantium distinctio
-                tempore iure minima.</p>
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="{{asset('assets/images/Bag3.jpg')}}" alt="Card image">
+                <div class="card-body">
+                    <h4 class="card-title">Three Piece</h4>
+                    <p class="card-text">ราคา 280 บาท</p>
+                    <a href="#" class="btn btn-primary">รายละเอียดสินค้า</a>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
+
+{{-- ข่าว --}}
+
 @endsection

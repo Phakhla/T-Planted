@@ -69,7 +69,7 @@
     <li><a href="#">Contact</a></li>
     </ul>
     <!--foote_bottom_ul_amrc ends here-->
-    <p class="text-center">Copyright @2017 | Designed With by <a href="#">Your Company Name</a></p>
+    <p class="text-center">Copyright @2017 | Designed With by <a href="#">Me</a></p>
 
     <ul class="social_footer_ul">
     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>

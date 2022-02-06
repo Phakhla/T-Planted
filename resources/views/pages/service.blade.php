@@ -8,6 +8,6 @@
 </div>
 
 <div class="container">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere non fugit accusantium commodi inventore quos, vero dolore laborum ea natus nobis provident minus dicta rem. Facilis recusandae ab laudantium modi?</p>
+    <p></p>
 </div>
 @endsection
