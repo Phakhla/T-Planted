@@ -1,10 +1,11 @@
 <?php
 
+use Faker\Guesser\Name;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +14,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name',64);
-            $table->string('email',64)->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password',64);
-            $table->rememberToken();
+            $table->string('name');
+            $table->text('description');
+            $table->float('price'); #100.00
+            $table->string('image');
             $table->timestamps();
         });
     }
-    
 
     /**
      * Reverse the migrations.
@@ -32,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('products');
     }
 }

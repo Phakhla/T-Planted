@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PhotoController extends Controller
+use App\Models\Products;
+
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +15,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        return ["name"=>"Top"];
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Products::all();
     }
 
     /**
@@ -34,10 +26,16 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        return [
-            "name"=>"store",
-            "payload"=> $request->all()
-        ];
+        $request ->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'image' => 'required',
+        ]);
+
+       $products = Products::create($request->all());
+
+      return $products;
     }
 
     /**
@@ -49,17 +47,8 @@ class PhotoController extends Controller
     public function show($id)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $products = Products::find($id);
+        return $products ;
     }
 
     /**
@@ -83,5 +72,13 @@ class PhotoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+     public function search($name)
+    {
+        $products = Products::where([
+            ['name','like','%'.$name.'%']
+        ])->get();
+        return $products;
     }
 }

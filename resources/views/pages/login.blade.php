@@ -1,4 +1,4 @@
-@extends('layouts.main_template')
+{{-- @extends('layouts.main_template')
 @section('content')
 <div class="container align-items-center mt-5">
         
@@ -27,4 +27,4 @@
     </form>
 
 </div>
-@endsection
+@endsection --}}
