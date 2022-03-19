@@ -1,8 +1,7 @@
 @extends('layouts.app')
-
 @section('title')
-    หน้าแรก
-    @endsection
+    tplanted
+@endsection
 @section('content')
-    <home />
+    <index />
 @endsection

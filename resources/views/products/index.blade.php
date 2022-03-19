@@ -1,8 +1,7 @@
 @extends('layouts.app')
-
 @section('title')
-    หน้าแรก
-    @endsection
+    Products
+@endsection
 @section('content')
-    <home />
+    <product-index/>
 @endsection

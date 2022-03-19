@@ -4,7 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Products;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\API\ProductController;
 use App\Models\User;
 
 /*
@@ -30,18 +30,17 @@ use App\Models\User;
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 
-
 //public
-Route::get('/products',[ProductsController::class,'index']);
-Route::get('/products/show/{id}',[ProductsController::class,'show']);
-Route::get('/products/search/{name}',[ProductsController::class,'search']);
+Route::get('/products',[ProductController::class,'index']);
+Route::get('/products/show/{id}',[ProductController::class,'show']);
+Route::get('/products/search/{name}',[ProductController::class,'search']);
 
 //private
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
-    Route::post('/products/store',[ProductsController::class,'store']);
-    Route::post('/products/update',[ProductsController::class,'update']);
-    Route::delete('/products/{id}',[ProductsController::class,'delete']);
+    Route::post('/products/store',[ProductController::class,'store']);
+    Route::post('/products/update',[ProductController::class,'update']);
+    Route::delete('/products/destroy/{id}',[ProductController::class,'destroy']);
 
     Route::post('/logout',[AuthController::class,'logout']);
 });

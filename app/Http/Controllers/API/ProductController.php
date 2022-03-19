@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\Models\Products;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,12 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return Products::all();
+        $products = Products::all();
+
+        return response()->json([
+            'success' => true,
+            'products' => $products
+        ]);
     }
 
     /**
@@ -72,6 +77,13 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
+        $products = Products::find($id);
+
+        $products->delete();
+        return response()->json([
+            'success' => true,
+            'massage' => 'deleted',
+        ]);
     }
 
      public function search($name)
