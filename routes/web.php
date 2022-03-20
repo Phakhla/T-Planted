@@ -48,4 +48,8 @@ Route::get('/product', function(){
     return view('products.index');
 });
 
+Route::get('/shop', function(){
+    return view('products.shop');
+});
+
 Route::get('/cart', [App\Http\Controllers\HomeController::class, 'cart']);

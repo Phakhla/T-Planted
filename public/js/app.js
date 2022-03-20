@@ -5311,6 +5311,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5355,6 +5359,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5588,6 +5626,9 @@ __webpack_require__.r(__webpack_exports__);
       dialog: false,
       dialogDelete: false,
       headers: [{
+        text: 'ID',
+        value: 'id'
+      }, {
         text: 'ชื่อสินค้า ',
         align: 'start',
         sortable: false,
@@ -29025,15 +29066,21 @@ var render = function () {
         { attrs: { align: "center", justify: "space-around" } },
         [
           _c(
-            "v-btn",
-            {
-              on: {
-                click: function ($event) {
-                  return _vm.redirect("/product")
+            "v-col-ml-4",
+            [
+              _c(
+                "v-btn",
+                {
+                  on: {
+                    click: function ($event) {
+                      return _vm.redirect("/product")
+                    },
+                  },
                 },
-              },
-            },
-            [_vm._v("\n      จัดการสินค้า\n    ")]
+                [_vm._v("\n        จัดการสินค้า\n      ")]
+              ),
+            ],
+            1
           ),
         ],
         1
@@ -29088,6 +29135,8 @@ var render = function () {
                         {
                           staticClass: "white--text align-end",
                           attrs: {
+                            src: products.image,
+                            alt: "",
                             gradient:
                               "to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)",
                             height: "200px",
@@ -29104,19 +29153,23 @@ var render = function () {
                       _c(
                         "v-card-actions",
                         [
+                          _c("a", {
+                            domProps: { textContent: _vm._s(products.price) },
+                          }),
+                          _vm._v(" "),
                           _c("v-spacer"),
                           _vm._v(" "),
                           _c(
                             "v-btn",
                             { attrs: { icon: "" } },
-                            [_c("v-icon", [_vm._v("mdi-heart")])],
+                            [_c("v-icon", [_vm._v("mdi-plus-one")])],
                             1
                           ),
                           _vm._v(" "),
                           _c(
                             "v-btn",
                             { attrs: { icon: "" } },
-                            [_c("v-icon", [_vm._v("mdi-bookmark")])],
+                            [_c("v-icon", [_vm._v("mdi-thumb-up")])],
                             1
                           ),
                           _vm._v(" "),
@@ -29187,7 +29240,7 @@ var render = function () {
                   "v-toolbar",
                   { attrs: { flat: "" } },
                   [
-                    _c("v-toolbar-title", [_vm._v("รายกาสินค้า")]),
+                    _c("v-toolbar-title", [_vm._v("รายการสินค้า")]),
                     _vm._v(" "),
                     _c("v-divider", {
                       staticClass: "mx-4",
@@ -29487,7 +29540,7 @@ var render = function () {
           {
             key: "item.actions",
             fn: function (ref) {
-              var item = ref.item
+              var products = ref.products
               return [
                 _c(
                   "v-icon",
@@ -29496,7 +29549,7 @@ var render = function () {
                     attrs: { small: "" },
                     on: {
                       click: function ($event) {
-                        return _vm.editItem(item)
+                        return _vm.editItem(products)
                       },
                     },
                   },
@@ -29509,7 +29562,7 @@ var render = function () {
                     attrs: { small: "" },
                     on: {
                       click: function ($event) {
-                        return _vm.deleteItem(item)
+                        return _vm.deleteItem(products)
                       },
                     },
                   },

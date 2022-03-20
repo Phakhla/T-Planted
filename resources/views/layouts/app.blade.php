@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                   tplanted
+                  <h3> tplanted </h3> 
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,8 +33,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                            </ul>
-
+                        
+                    </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                            <!-- Authentication Links -->
@@ -53,12 +53,15 @@
                            
                             
                         @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ ('shop') }}">{{ __('เลือกซื้อสินค้า |') }}</a>                                
+                        </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ ('/product') }}">{{ __('จัดการสินค้า') }}</a>
+                                <a class="nav-link" href="{{ ('product') }}">{{ __('จัดการสินค้า  | ') }}</a>
                                 {{-- <a class="navbar-link" href="{{ url('/product') }}"  >จัดการสินค้า </a> --}}
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ ('cart') }}">{{ __('Cart') }}</a>                                
+                                <a class="nav-link" href="{{ ('cart') }}">{{ __('ตะกร้า  |') }}</a>                                
                             </li>
 
                             <li class="nav-item dropdown">

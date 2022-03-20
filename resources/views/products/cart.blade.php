@@ -14,7 +14,8 @@
                 <img class="card-img-top" src="{{asset('assets/images/Bag1.jpg')}}" alt="Card image">
                 <div class="card-body">
                     <h4 class="card-title">One</h4>
-                    <p class="card-text">ราคา 100 บาท</p>   
+                
+                    <p class="card-text">ราคา 100 บาท </p>   
                         <a href="#" class="btn btn-primary">รายละเอียดสินค้า</a>  
                 </div>
             </div>

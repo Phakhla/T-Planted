@@ -36,6 +36,7 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required',
             
+
         ]);
 
        $products = Products::create($request->all());
