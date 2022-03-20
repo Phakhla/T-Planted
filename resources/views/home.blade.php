@@ -4,5 +4,7 @@
     หน้าแรก
     @endsection
 @section('content')
-    <home />
+    <h1 class="text-center">รายการสินค้า</h1>
+    <index />
+
 @endsection

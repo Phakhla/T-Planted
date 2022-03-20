@@ -31,10 +31,11 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function login()
+    public function cart()
     {
-        return view('layouts.app');
+        return view('products.cart');
     }
+ 
     
 
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title')
-    Products
+    จัดการสินค้า
 @endsection
 @section('content')
-    <product-index/>
+    <product-index />
 @endsection

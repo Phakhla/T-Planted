@@ -47,3 +47,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name(
 Route::get('/product', function(){
     return view('products.index');
 });
+
+Route::get('/cart', [App\Http\Controllers\HomeController::class, 'cart']);

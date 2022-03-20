@@ -10,7 +10,7 @@
             <v-toolbar
               flat
             >
-              <v-toolbar-title >รายกาสินค้า</v-toolbar-title>
+              <v-toolbar-title >รายการสินค้า</v-toolbar-title>
               <v-divider
                 class="mx-4"
                 inset
@@ -116,17 +116,17 @@
               </v-dialog>
             </v-toolbar>
           </template>
-          <template v-slot:item.actions="{ item }">
+          <template v-slot:item.actions="{ products }">
             <v-icon
               small
               class="mr-2"
-              @click="editItem(item)"
+              @click="editItem(products)"
             >
               mdi-pencil
             </v-icon>
             <v-icon
               small
-              @click="deleteItem(item)"
+              @click="deleteItem(products)"
             >
               mdi-delete
             </v-icon>

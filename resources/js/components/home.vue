@@ -1,9 +1,13 @@
 <template>
     <v-app>
+      
       <v-row align="center" justify="space-around">
-        <v-btn @click="redirect('/product')">
-          จัดการสินค้า
-        </v-btn>
+        <v-col-ml-4>
+          <v-btn @click="redirect('/product')">
+            จัดการสินค้า
+          </v-btn>
+        </v-col-ml-4>
+         
       </v-row>
     </v-app>
 </template>
