@@ -5620,6 +5620,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5629,7 +5630,7 @@ __webpack_require__.r(__webpack_exports__);
         text: 'ID',
         value: 'id'
       }, {
-        text: 'ชื่อสินค้า ',
+        text: 'ชื่อสินค้า',
         align: 'start',
         sortable: false,
         value: 'name'
@@ -5662,7 +5663,9 @@ __webpack_require__.r(__webpack_exports__);
         price: 0,
         description: '',
         image: ''
-      }
+      },
+      table_options: {},
+      pagination: {}
     };
   },
   computed: {
@@ -5676,6 +5679,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     dialogDelete: function dialogDelete(val) {
       val || this.closeDelete();
+    },
+    table_options: function table_options(val) {
+      console.log(val);
+      this.load_products();
     }
   },
   mounted: function mounted() {
@@ -5686,7 +5693,12 @@ __webpack_require__.r(__webpack_exports__);
     initialize: function initialize() {
       var _this = this;
 
-      axios.get("api/products").then(function (response) {
+      axios.get("api/products", {
+        params: {
+          page: this.table_options.page,
+          itemsPerPage: this.table_options.itemsPerPage
+        }
+      }).then(function (response) {
         if (response.data.success == true) {
           _this.products = response.data.products;
         } else {
@@ -29229,7 +29241,13 @@ var render = function () {
         attrs: {
           headers: _vm.headers,
           items: _vm.products,
-          "sort-by": "calories",
+          options: _vm.table_options,
+          "server-items-length": _vm.pagination.total,
+        },
+        on: {
+          "update:options": function ($event) {
+            _vm.table_options = $event
+          },
         },
         scopedSlots: _vm._u([
           {

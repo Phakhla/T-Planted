@@ -3,8 +3,9 @@
         <v-data-table
           :headers="headers"
           :items="products"
-          sort-by="calories"
           class="elevation-1"
+          :options.sync="table_options"
+          :server-items-length="pagination.total"
         >
           <template v-slot:top>
             <v-toolbar
@@ -105,7 +106,7 @@
               </v-dialog>
               <v-dialog v-model="dialogDelete" max-width="500px">
                 <v-card>
-                  <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
+                  <v-card-title class="text-h5">คุณต้องการลบสินค้านี้จริงหรือ?</v-card-title>
                   <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
@@ -116,17 +117,17 @@
               </v-dialog>
             </v-toolbar>
           </template>
-          <template v-slot:item.actions="{ products }">
+          <template v-slot:item.actions="{ item }">
             <v-icon
               small
               class="mr-2"
-              @click="editItem(products)"
+              @click="editItem(item)"
             >
               mdi-pencil
             </v-icon>
             <v-icon
               small
-              @click="deleteItem(products)"
+              @click="deleteItem(item)"
             >
               mdi-delete
             </v-icon>
@@ -155,7 +156,7 @@ export default {
               value : 'id',
             },
             {
-              text: 'ชื่อสินค้า ',
+              text: 'ชื่อสินค้า',
               align: 'start',
               sortable: false,
               value: 'name',
@@ -168,18 +169,22 @@ export default {
           products: [],
           editedIndex: -1,
           editedItem: {
+            id:id,
             name: '',
             price: 0,
             description : '',
             image: '',
           },
           defaultItem: {
+            id:id,
             name: '',
             price: 0,
             description : '',
             image: '',
            
           },
+            table_options:{},
+            pagination:{},
         
           };
     },
@@ -197,6 +202,10 @@ export default {
       dialogDelete (val) {
         val || this.closeDelete()
       },
+      table_options(val){
+          console.log(val)
+          this.load_products()
+      }
     },
 
     mounted() {
@@ -206,15 +215,19 @@ export default {
 
     methods: {
 
-      initialize() {
+      load_products() {
         axios
-          .get("api/products")
-          .then((response) => {
-            if (response.data.success == true) {
-              this.products = response.data.products;
-            } else {
-              console.log("fail");
-            }
+          .get("api/products",{
+                params:{
+                  page: this.table_options.page,
+                  itemsPerPage: this.table_options.itemsPerPage,
+                  }
+          }).then(response =>{
+                  console.log('[Response] '+ response.data)
+                  if(response.data.success == true){
+                      this.pagination = response.data.pagination
+                      this.products = response.data.products
+                  }
           })
           .catch((error) => {
             console.log("error");
@@ -236,16 +249,15 @@ export default {
 
       deleteItemConfirm () {
         //API delete
-                     axios.delete('api/products/destroy/'+this.editedItem.id)
+        axios.delete('api/products/destroy/'+this.editedItem.id)
                     .then(response =>{
                         this.products.splice(this.editedIndex, 1)
                     })
                     .catch(error => {
                         console.log("error")
                     });
-
-        this.closeDelete()
-      },
+                this.closeDelete()
+            },
 
       close () {
         this.dialog = false

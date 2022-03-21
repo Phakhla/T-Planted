@@ -68,16 +68,16 @@ class ProductController extends Controller
     {
         $id = $request->id;
 
-        $product = Products::find($id);
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->description = $request->description;
-        $product->save();
+        $products = Products::find($id);
+        $products->name = $request->name;
+        $products->price = $request->price;
+        $products->description = $request->description;
+        $products->save();
 
         return response()->json([
             'success'=>true,
             'message'=>'update success',
-            'product'=>$product
+            'product'=>$products
         ]);
     }
 
