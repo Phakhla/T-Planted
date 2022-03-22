@@ -4,8 +4,6 @@
           :headers="headers"
           :items="products"
           class="elevation-1"
-          :options.sync="table_options"
-          :server-items-length="pagination.total"
         >
           <template v-slot:top>
             <v-toolbar
@@ -169,23 +167,21 @@ export default {
           products: [],
           editedIndex: -1,
           editedItem: {
-            id:id,
+           
             name: '',
             price: 0,
             description : '',
             image: '',
           },
           defaultItem: {
-            id:id,
+           
             name: '',
             price: 0,
             description : '',
             image: '',
            
           },
-            table_options:{},
-            pagination:{},
-        
+       
           };
     },
 
@@ -219,8 +215,7 @@ export default {
         axios
           .get("api/products",{
                 params:{
-                  page: this.table_options.page,
-                  itemsPerPage: this.table_options.itemsPerPage,
+                
                   }
           }).then(response =>{
                   console.log('[Response] '+ response.data)

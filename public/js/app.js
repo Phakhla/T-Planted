@@ -5663,9 +5663,7 @@ __webpack_require__.r(__webpack_exports__);
         price: 0,
         description: '',
         image: ''
-      },
-      table_options: {},
-      pagination: {}
+      }
     };
   },
   computed: {
@@ -5690,19 +5688,17 @@ __webpack_require__.r(__webpack_exports__);
     console.log("Initialized");
   },
   methods: {
-    initialize: function initialize() {
+    load_products: function load_products() {
       var _this = this;
 
       axios.get("api/products", {
-        params: {
-          page: this.table_options.page,
-          itemsPerPage: this.table_options.itemsPerPage
-        }
+        params: {}
       }).then(function (response) {
+        console.log('[Response] ' + response.data);
+
         if (response.data.success == true) {
+          _this.pagination = response.data.pagination;
           _this.products = response.data.products;
-        } else {
-          console.log("fail");
         }
       })["catch"](function (error) {
         console.log("error");
@@ -29510,9 +29506,7 @@ var render = function () {
                           "v-card",
                           [
                             _c("v-card-title", { staticClass: "text-h5" }, [
-                              _vm._v(
-                                "Are you sure you want to delete this item?"
-                              ),
+                              _vm._v("คุณต้องการลบสินค้านี้จริงหรือ?"),
                             ]),
                             _vm._v(" "),
                             _c(
@@ -29558,7 +29552,7 @@ var render = function () {
           {
             key: "item.actions",
             fn: function (ref) {
-              var products = ref.products
+              var item = ref.item
               return [
                 _c(
                   "v-icon",
@@ -29567,7 +29561,7 @@ var render = function () {
                     attrs: { small: "" },
                     on: {
                       click: function ($event) {
-                        return _vm.editItem(products)
+                        return _vm.editItem(item)
                       },
                     },
                   },
@@ -29580,7 +29574,7 @@ var render = function () {
                     attrs: { small: "" },
                     on: {
                       click: function ($event) {
-                        return _vm.deleteItem(products)
+                        return _vm.deleteItem(item)
                       },
                     },
                   },
