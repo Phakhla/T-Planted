@@ -6,14 +6,12 @@
 
 require('./bootstrap');
 
-import Vue from 'vue';
+window.Vue = require('vue').default;
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
-
+import Vue from 'vue'
 
 Vue.use(Vuetify);
-
-window.Vue = require('vue').default;
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,6 +27,9 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('home', require('./components/home.vue').default);
 Vue.component('index', require('./components/index.vue').default);
+
+Vue.component('product', require('./components/product.vue').default);
+
 Vue.component('product-index', require('./pages/product/index.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to

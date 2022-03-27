@@ -3,5 +3,6 @@
     จัดการสินค้า
 @endsection
 @section('content')
-    <product-index ></product-index>
+    <product-index />
 @endsection
+

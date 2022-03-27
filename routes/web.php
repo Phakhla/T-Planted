@@ -34,7 +34,8 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     if(Auth::check()){
         return redirect('home');
-    }else{
+    }
+    else{
         return view('index');
     };
     
@@ -44,6 +45,7 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+
 Route::get('/product', function(){
     return view('products.index');
 });
@@ -53,3 +55,6 @@ Route::get('/shop', function(){
 });
 
 Route::get('/cart', [App\Http\Controllers\HomeController::class, 'cart']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

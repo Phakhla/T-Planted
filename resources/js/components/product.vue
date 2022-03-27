@@ -1,14 +1,15 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="products"
+    :items="desserts"
+    sort-by="calories"
     class="elevation-1"
-  > 
+  >
     <template v-slot:top>
       <v-toolbar
         flat
       >
-        <v-toolbar-title>รายการสินค้า</v-toolbar-title>
+        <v-toolbar-title>My CRUD</v-toolbar-title>
         <v-divider
           class="mx-4"
           inset
@@ -45,7 +46,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.name"
-                      label="ชื่อสินค้า"
+                      label="Dessert name"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -54,17 +55,39 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.price"
-                      label="ราคา"
+                      v-model="editedItem.calories"
+                      label="Calories"
                     ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="6"
+                    md="4"
+                  >
                     <v-text-field
-                      v-model="editedItem.description"
-                      label="รายละเอียด"
-                      ></v-text-field>
-                      <v-text-field
-                      v-model="editedItem.image"
-                      label="รูปภาพ"
-                      ></v-text-field>
+                      v-model="editedItem.fat"
+                      label="Fat (g)"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="6"
+                    md="4"
+                  >
+                    <v-text-field
+                      v-model="editedItem.carbs"
+                      label="Carbs (g)"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="6"
+                    md="4"
+                  >
+                    <v-text-field
+                      v-model="editedItem.protein"
+                      label="Protein (g)"
+                    ></v-text-field>
                   </v-col>
                 </v-row>
               </v-container>
@@ -129,40 +152,40 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-        dialog: false,
+  export default {
+    data: () => ({
+      dialog: false,
       dialogDelete: false,
       headers: [
         {
-          text: 'ชื่อสินค้า',
+          text: 'Dessert (100g serving)',
           align: 'start',
           sortable: false,
           value: 'name',
         },
-        { text: 'ราคา', value: 'price' },
-        { text: 'รายละเอียด', value: 'description', sortable: false },
-        { text: 'รูปภาพ', value: 'image', sortable: false },
-        { text: 'จัดการ', value: 'actions', sortable: false },
+        { text: 'Calories', value: 'calories' },
+        { text: 'Fat (g)', value: 'fat' },
+        { text: 'Carbs (g)', value: 'carbs' },
+        { text: 'Protein (g)', value: 'protein' },
+        { text: 'Actions', value: 'actions', sortable: false },
       ],
-      products: [],
+      desserts: [],
       editedIndex: -1,
       editedItem: {
         name: '',
-        price: 0,
-        description: '',
-        image: '',
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0,
       },
       defaultItem: {
         name: '',
-        price: 0,
-        description:'',
-        image:'',
-    
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0,
       },
-    };
-  },
+    }),
 
     computed: {
       formTitle () {
@@ -179,52 +202,101 @@ export default {
       },
     },
 
-
-  mounted() {
-    this.initialize();
-    console.log("Initialized");
-  },
-
-  
-
-  methods: {
-    initialize() {
-      axios
-        .get("api/products")
-        .then((response) => {
-          if (response.data.success == true) {
-            this.products = response.data.products;
-          } else {
-            console.log("fail");
-          } 
-        })
-        .catch((error) => {
-          console.log("error");
-        });
+    created () {
+      this.initialize()
     },
 
+    methods: {
+      initialize () {
+        this.desserts = [
+          {
+            name: 'Frozen Yogurt',
+            calories: 159,
+            fat: 6.0,
+            carbs: 24,
+            protein: 4.0,
+          },
+          {
+            name: 'Ice cream sandwich',
+            calories: 237,
+            fat: 9.0,
+            carbs: 37,
+            protein: 4.3,
+          },
+          {
+            name: 'Eclair',
+            calories: 262,
+            fat: 16.0,
+            carbs: 23,
+            protein: 6.0,
+          },
+          {
+            name: 'Cupcake',
+            calories: 305,
+            fat: 3.7,
+            carbs: 67,
+            protein: 4.3,
+          },
+          {
+            name: 'Gingerbread',
+            calories: 356,
+            fat: 16.0,
+            carbs: 49,
+            protein: 3.9,
+          },
+          {
+            name: 'Jelly bean',
+            calories: 375,
+            fat: 0.0,
+            carbs: 94,
+            protein: 0.0,
+          },
+          {
+            name: 'Lollipop',
+            calories: 392,
+            fat: 0.2,
+            carbs: 98,
+            protein: 0,
+          },
+          {
+            name: 'Honeycomb',
+            calories: 408,
+            fat: 3.2,
+            carbs: 87,
+            protein: 6.5,
+          },
+          {
+            name: 'Donut',
+            calories: 452,
+            fat: 25.0,
+            carbs: 51,
+            protein: 4.9,
+          },
+          {
+            name: 'KitKat',
+            calories: 518,
+            fat: 26.0,
+            carbs: 65,
+            protein: 7,
+          },
+        ]
+      },
+
       editItem (item) {
-        this.editedIndex = this.products.indexOf(item)
+        this.editedIndex = this.desserts.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialog = true
       },
 
       deleteItem (item) {
-        this.editedIndex = this.products.indexOf(item)
+        this.editedIndex = this.desserts.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialogDelete = true
       },
 
       deleteItemConfirm () {
-        // API Delete
-                    axios.delete('api/products/destroy/'+this.editedItem.id)
-                    .then(response =>{
-                        this.products.splice(this.editedIndex, 1)
-                    })
-                    .catch(error => {
-                        console.log("error")
-                    });
-                this.closeDelete()
+        this.desserts.splice(this.editedIndex, 1)
+        this.closeDelete()
       },
 
       close () {
@@ -244,27 +316,13 @@ export default {
       },
 
       save () {
-                if (this.editedIndex > -1) {
-                    // Update
-                Object.assign(this.products[this.editedIndex], this.editedItem)
-                } else {
-                    // Add new
-                    console.log("add new")
-                    axios.post('api/products/store', {
-                        name: this.editedItem.name,
-                        description: this.editedItem.description,
-                        price: this.editedItem.price,
-                        image: this.editedItem.image,
-                    })
-                    .then(response =>{
-                        this.initialize()
-                    })
-                    .catch(error => {
-                        console.log("error")
-                    });
-                }
-                this.close()
+        if (this.editedIndex > -1) {
+          Object.assign(this.desserts[this.editedIndex], this.editedItem)
+        } else {
+          this.desserts.push(this.editedItem)
+        }
+        this.close()
       },
-  },
-};
+    },
+  }
 </script>
